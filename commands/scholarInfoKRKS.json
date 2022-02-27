@@ -1,0 +1,32 @@
+[
+  {
+    "ID": "ISKO1",
+    "name": "Wyn",
+    "ronin": "Empty",
+    "isko": "ronin:c3fafec1abfb52afacc20691681905d8903ae97b"
+  },
+  {
+    "ID": "ISKO2",
+    "name": "Abraham",
+    "ronin": "Empty",
+    "isko": "ronin:491b48a4f2434dbcff3623075ab2e02b4ba9e609"
+  },
+  {
+    "ID": "ISKO3",
+    "name": "Wil",
+    "ronin": "Empty",
+    "isko": "ronin:4ff8a81abe0f52393324198505c5e1d1649b773a"
+  },
+  {
+    "ID": "ISKO4",
+    "name": "Van",
+    "ronin": "Empty",
+    "isko": "ronin:e2abf2e145433197d867e671a7ba40aba85d29ff"
+  },
+  {
+    "ID": "ISKO5",
+    "name": "Vicente",
+    "ronin": "Empty",
+    "isko": "ronin:89863541580984acf0e8bfac58d7dea36a7b4387"
+  }
+]
