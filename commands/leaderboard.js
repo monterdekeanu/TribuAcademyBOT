@@ -12,8 +12,7 @@ const { write } = require('jimp');
 const { endianness } = require('os');
 var axieTeam = [0, 0, 0]
 var serverUp = true;
-var invalidIsko = false;
-module.exports = {
+var invalidIsko = false; module.exports = {
   category: 'Scholar',
   description: 'Returns Scholar Ronin Wallet',
   callback: async ({ interaction, message, text }) => {
