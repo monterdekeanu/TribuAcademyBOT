@@ -74,7 +74,7 @@ var invalidIsko = false; module.exports = {
           serverUp = false;
         })
     })
-    if(arrayOfScholars.length==0){
+    if(ranking.length==0){
       serverUp = false;
     }
     if (serverUp) {
