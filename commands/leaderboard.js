@@ -115,9 +115,11 @@ var invalidIsko = false; module.exports = {
         message.channel.send({ embeds: [embed] })
       }, 5000)
     } else {
-      message.channel.send("Leaderboard server is down... Please try again").then(msg => setTimeout(msg => {
-        msg.delete()
-      }, 5000))
+      message.channel.send("Leaderboard server is down... Please try again").then(msg => {
+        setTimeout(msg => {
+          msg.delete()
+        }, 5000)
+      })
     }
     if (flag == 1) {
       message.channel.send("Leaderboard server is down... Please try again").then(msg => setTimeout(msg => {
