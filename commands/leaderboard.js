@@ -46,8 +46,6 @@ var invalidIsko = false; module.exports = {
     scholarInfo.forEach((e) => {
       arrayOfScholars.push([e.user, e.ronin])
     })
-    console.log(scholarInfo)
-    console.log(arrayOfScholars)
     const embed = new MessageEmbed()
     embed.setTitle("Tribu Academy Leaderboards")
       .setColor('ORANGE')
@@ -62,7 +60,6 @@ var invalidIsko = false; module.exports = {
         return (a[1] > b[1]) ? 1 : -1;
       }
     }
-    console.log(arrayOfScholars)
     arrayOfScholars.forEach((leadRonin) => {
       fetch('https://game-api.axie.technology/api/v1/' + leadRonin[1])
         .then(response => response.text())
@@ -77,6 +74,9 @@ var invalidIsko = false; module.exports = {
           serverUp = false;
         })
     })
+    if(arrayOfScholars.length==0){
+      serverUp = false;
+    }
     if (serverUp) {
       console.log(serverUp)
       setTimeout(() => {
