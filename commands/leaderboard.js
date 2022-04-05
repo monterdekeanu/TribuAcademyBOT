@@ -3,8 +3,8 @@ const { MessageEmbed, MessageAttachment } = require('discord.js');
 const fs = require('fs');
 var Jimp = require('jimp');
 const path = require('path');
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 var request = require('request')
+var fetch = require('node-fetch')
 var battleInfo = require('./battleInfo.json');
 const { Embed } = require('@discordjs/builders');
 const { write } = require('jimp');
@@ -14,7 +14,7 @@ var serverUp = true;
 var invalidIsko = false; module.exports = {
   category: 'Scholar',
   description: 'Returns Scholar Ronin Wallet',
-  callback: async ({ interaction, message, text }) => {
+  callback: ({ interaction, message, text }) => {
     text = text.toUpperCase();
 
     var scholarInfo = require('../json/newLeader.json');
@@ -65,27 +65,19 @@ var invalidIsko = false; module.exports = {
         .then(response => response.text())
         .then(data => {
           slpJSON = JSON.parse(data)
-          var scholarName = slpJSON.name + ""
-          console.log(leadRonin[0])
           ranking.push([leadRonin[0], slpJSON.mmr])
-        }).catch(() => {
-          console.log("API is DOWN")
-          flag = 1
-          serverUp = false;
         })
     })
-    if(ranking.length==0){
-      serverUp = false;
-    }
-    if (serverUp) {
-      console.log(serverUp)
       setTimeout(() => {
         ranking.sort(compareSecondColumn)
         ranking.reverse();
         var numRank = 1;
+        if(ranking.length==0){
+          serverUp = false;
+        }
+        if (serverUp) {
         ranking.forEach((e) => {
           if (numRank == 1) {
-            console.log(e)
             embed.addFields({
               name: numRank + ". 🥇" + e[0],
               value: "MMR: " + e[1],
@@ -112,9 +104,7 @@ var invalidIsko = false; module.exports = {
           }
           numRank++;
         })
-        message.channel.send({ embeds: [embed] })
-      }, 5000)
-    } else {
+        } else {
       message.channel.send("Leaderboard server is down... Please try again").then(msg => {
         setTimeout(() => {
           msg.delete()
@@ -132,5 +122,8 @@ var invalidIsko = false; module.exports = {
         console.log(error)
       })
     }
+        message.channel.send({ embeds: [embed] })
+      }, 3000)
+    
   },
 }
